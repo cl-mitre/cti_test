@@ -8,13 +8,13 @@ ONLY_SOURCE=True
 TYPE=".json"
 
 for CHANGED_FILE in $CHANGED_FILES; do
-  if ! [[ $CHANGED_FILES =~ $TYPE ]]; then
-    ONLY_Source=False
+  if ! [[ $CHANGED_FILE =~ $TYPE ]]; then
+    ONLY_SOURCE=False
     break
   fi
 done
 
-if [[ $ONLY_FILES == True ]]; then
+if [[ $ONLY_SOURCE == True ]]; then
   echo "No source changes identified, exiting."
   travis_terminate 0
   exit 1
