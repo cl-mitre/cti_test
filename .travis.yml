@@ -19,6 +19,6 @@ if [[ $ONLY_SOURCE == True ]]; then
   travis_terminate 0
   exit 1
 else
-  echo "Source changes found. Building..."
+  echo "Source changes found. Building."
   # bash webhook.sh
 fi
