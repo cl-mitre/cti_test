@@ -1,24 +1,22 @@
-#language: bash
+language: bash
 
-#script:
-set -e
+script:
+  - set -e
+  - CHANGED_FILES=`git diff --name-only master...${TRAVIS_COMMIT}`
+  - ONLY_SOURCE=True
+  - TYPE=".json"
 
-CHANGED_FILES=`git diff --name-only master...${TRAVIS_COMMIT}`
-ONLY_SOURCE=True
-TYPE=".json"
+  - for CHANGED_FILE in $CHANGED_FILES; do
+      if ! [[ $CHANGED_FILE =~ $TYPE ]]; then
+        ONLY_SOURCE=False
+        break
+      fi
+    done
 
-for CHANGED_FILE in $CHANGED_FILES; do
-  if ! [[ $CHANGED_FILE =~ $TYPE ]]; then
-    ONLY_SOURCE=False
-    break
-  fi
-done
-
-if [[ $ONLY_SOURCE == True ]]; then
-  echo "No source changes identified, exiting."
-  travis_terminate 0
-  exit 1
-else
-  echo "Source changes found. Building."
-  # bash webhook.sh
-fi 
+  - if [[ $ONLY_SOURCE == True ]]; then
+      echo "No source changes identified, exiting."
+      travis_terminate 0
+      exit 1
+    else
+      echo "Source changes found. Building."
+    fi 
