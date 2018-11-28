@@ -21,4 +21,4 @@ if [[ $ONLY_SOURCE == True ]]; then
 else
   echo "Source changes found. Building."
   # bash webhook.sh
-fi
+fi 
