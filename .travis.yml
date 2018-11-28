@@ -20,4 +20,5 @@ script:
       exit 1
     else
       echo "Source changes found. Building."
+      bash webhook.sh
     fi 
