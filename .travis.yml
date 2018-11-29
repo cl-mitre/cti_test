@@ -4,17 +4,19 @@ script:
   - | 
     set -e
     CHANGED_FILES=`git diff --name-only master...${TRAVIS_COMMIT}`
-    ONLY_SOURCE=True
-    TYPE=".json"
+    NOT_SOURCE=True
+    TYPE="json"
 
+    echo $CHANGED_FILES
+    
     for CHANGED_FILE in $CHANGED_FILES; do
-      if ! [[ $CHANGED_FILE =~ $TYPE ]]; then
-        ONLY_SOURCE=False
+      if [[ $CHANGED_FILES =~ $TYPE ]]; then
+        NOT_SOURCE=False
         break
       fi
     done
 
-    if [[ $ONLY_SOURCE == True ]]; then
+    if [[ $NOT_SOURCE == True ]]; then
       echo "No source changes identified, exiting."
       travis_terminate 0
       exit 1
