@@ -8,6 +8,7 @@ script:
     TYPE="json"
 
     echo $CHANGED_FILES
+    echo $TRAVIS_TOKEN
     
     for CHANGED_FILE in $CHANGED_FILES; do
       if [[ $CHANGED_FILES =~ $TYPE ]]; then
