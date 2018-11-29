@@ -3,12 +3,11 @@ language: bash
 script:
   - | 
     set -e
-    CHANGED_FILES=`git diff --name-only master...${TRAVIS_COMMIT}`
+    CHANGED_FILES=`git show`
     NOT_SOURCE=True
     TYPE="json"
 
     echo $CHANGED_FILES
-    echo $TRAVIS_COMMIT
     
     for CHANGED_FILE in $CHANGED_FILES; do
       if [[ $CHANGED_FILES =~ $TYPE ]]; then
