@@ -3,7 +3,7 @@ language: bash
 script:
   - | 
     set -e
-    CHANGED_FILES=`git show`
+    CHANGED_FILES=`git diff --name-only HEAD~`
     NOT_SOURCE=True
     TYPE="json"
 
