@@ -15,7 +15,7 @@
                     "source_name": "mitre-attack"
                 }
             ],
-            "type": "course-of-action",
+            "type": "course-of-action", 
             "modified": "2018-09-07T16:42:18.771Z",
             "created": "2018-09-07T16:42:18.771Z"
         }
